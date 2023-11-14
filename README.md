@@ -48,3 +48,20 @@ Apart from the files provided by Udacity, there are several files present in the
 * analysis_functions.py - a file containing all functions used during model preparation
 * xtest.csv, ytest.csv - test datasets
 * preds.csv - csv output by the classifier
+
+## Requirements
+
+All you need is python 3 and Jupyter notebooks. All the libraries are imported in the files.
+
+## Usage
+
+I'd recommend starting with ipynb file to understand the data and the calssifier. You can simply open it and run all cells.
+
+Then, if you want to use the classifier
+
+1. In classifier.py comment out a single line under # Uncomment 
+2. In cmd print ipython to enable python functionality
+3. Import Classifier() class from classifier.py ( from classifier.py import Classifier )
+4. Instantiate a classifier object ( clf = Classifier() )
+5. Fit classifier inputing paths to portfolio, profile, 
+
