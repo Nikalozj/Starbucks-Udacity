@@ -57,11 +57,15 @@ All you need is python 3 and Jupyter notebooks. All the libraries are imported i
 
 I'd recommend starting with ipynb file to understand the data and the calssifier. You can simply open it and run all cells.
 
-Then, if you want to use the classifier
+Then, if you want to use the classifier:
 
-1. In classifier.py comment out a single line under # Uncomment 
+1. In classifier.py comment out a single line under # Uncomment if testing in jupyter notebooks
 2. In cmd print ipython to enable python functionality
 3. Import Classifier() class from classifier.py ( from classifier.py import Classifier )
 4. Instantiate a classifier object ( clf = Classifier() )
-5. Fit classifier inputing paths to portfolio, profile, 
+5. Fit classifier inputing paths to portfolio, profile, transcript ( clf.fit(paths) )
+6. Predict inputing a path to:
+   * a csv with person & offer_id pairs ( clf.predict(path) )
+   * location where predictions csv should be output
+7. Check predictions
 
