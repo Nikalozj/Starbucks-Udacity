@@ -70,7 +70,7 @@ class Classifier():
         self.transcript = transcript
         
         # Create scale_cols
-        self.scale_cols = ['difficulty', 'duration', 'reward', 'age', 'income', 'days_registered', 'trans_cnt', 'avg_spent']
+        self.scale_cols = ['reward', 'age', 'income', 'days_registered', 'trans_cnt', 'avg_spent']
         
         # Notification
         print('Training RFC Model')

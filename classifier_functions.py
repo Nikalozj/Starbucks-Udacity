@@ -41,13 +41,16 @@ def transform_data_to_fit(portfolio, profile, transcript):
     df = df.merge(profile_cleaned, how = 'inner', on = 'person')
     
     # Drop person & offer_id & time
-    df.drop(['person', 'offer_id', 'time'], axis = 1, inplace = True)
+    df.drop(['person', 'offer_id', 'time', 'duration', 'difficulty', 'bogo'], axis = 1, inplace = True)
     
     # Remove users with age == 118
     df = df[df['age'] != 118]
     
     # Get dummies for Gender 
     df = pd.get_dummies(df, drop_first = True)
+    
+    # Drop gender_O for low correlation
+    df.drop('gender_O', axis = 1, inplace = True)
     
     # Return
     return df, profile_cleaned, portfolio_cleaned, transcript_cleaned
@@ -87,10 +90,13 @@ def get_and_transform_data_to_predict(pairs_path, profile_cleaned, portfolio_cle
     
     # Drop person & offer_id
     df_ids = df[['person', 'offer_id']]
-    df.drop(['person', 'offer_id'], axis = 1, inplace = True)
+    df.drop(['person', 'offer_id', 'duration', 'difficulty', 'bogo'], axis = 1, inplace = True)
     
     # Get dummies for Gender 
     df = pd.get_dummies(df, drop_first = True)
+    
+    # Drop gender_O
+    df.drop('gender_O', axis = 1, inplace = True)
     
     # Return
     return df, df_ids, df_nulls

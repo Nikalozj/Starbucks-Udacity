@@ -138,12 +138,19 @@ def split_train_test(df_cleaned):
     OUTPUT
     train_df - dataframe to use for training
     '''
+    # Get offers received on time = 576
     test_df = df_cleaned[df_cleaned['time'] == 576]
+    
+    # Export X_test person & offer_id pairs
     test_df[['person', 'offer_id']].to_csv('data/xtest.csv', index = False)
+    
+    # Export y_test target column
     test_df[['responded']].to_csv('data/ytest.csv', index = False)
     
+    # Get training df
     train_df = df_cleaned[df_cleaned['time'] < 576]
     
+    # Return
     return train_df
 
 def engineer_event_aggs(df, transcript):
@@ -259,12 +266,18 @@ def transform_data(portfolio, profile, transcript):
     # Drop ID columns
     df.drop(['person', 'offer_id', 'time'], axis = 1, inplace = True)
     
+    # Drop columns for correlation
+    df.drop(['duration', 'difficulty', 'bogo'], axis = 1, inplace = True)
+    
     # Split into dataframes, one with demographic data and the other without
-    df_nulls = df[df['age'] == 118].drop(['gender', 'income'], axis = 1)
+    df_nulls = df[df['age'] == 118].drop(['gender', 'income', 'age'], axis = 1)
     df = df[df['age'] != 118]
     
     # Get dummies for Gender 
     df = pd.get_dummies(df, drop_first = True)
+    
+    # Gender_O has low correlation with target column
+    df.drop('gender_O', axis = 1, inplace = True)
     
     return df, df_nulls
 
