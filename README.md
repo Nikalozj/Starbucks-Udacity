@@ -51,7 +51,13 @@ Apart from the files provided by Udacity, there are several files present in the
 
 ## Requirements
 
-All you need is python 3 and Jupyter notebooks. All the libraries are imported in the files.
+The technology you need is python 3 and Jupyter notebooks.
+
+Python libraries used:
+* numpy
+* pandas
+* matplotlib, seaborn
+* sklearn
 
 ## Usage
 
